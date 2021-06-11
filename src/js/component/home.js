@@ -1,57 +1,67 @@
 import React from "react";
-import propTypes from 'prop-types';
+import propTypes from "prop-types";
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
 
 //creo un title que recibe un objeto props
-const Title = (props) => {
+const Title = props => {
 	return (
 		<div>
 			<h1 style={{ color: "red", fontSize: "60px" }}>
 				Titulo en componente Title, con inline style en react
 			</h1>
-            <h2>{ props.name }</h2>
+			<h2>{props.name}</h2>
 		</div>
 	);
 };
-//props de title
-Title.propTypes = {
-    name: PropTypes.string,
-}
 
-//Defino una card, la cual puede despues reusar
-const Card = (props) => {
+Title.propTypes = {
+	name: propTypes.string
+};
+
+//Creo una card
+const Card = props => {
 	return (
-		//aca pegar el codigo de las cards de bootstrap. En los elementos de prop, se coloca {props.element}
+		<div className="card" style={{ width: "18rem" }}>
+			<img src={props.image} className="card-img-top" alt="..." />
+			<div className="card-body">
+				<h5 className="card-title">{props.title}</h5>
+				<p className="card-text">{props.body}</p>
+				<a href={props.url} className="btn btn-primary">
+					Go somewhere
+				</a>
+			</div>
+		</div>
 	);
 };
-//props de Card
+
 Card.propTypes = {
-	title: PropTypes.string,
-	image: PropTypes.string,
-	content: PropTypes.string,
+	image: propTypes.string,
+	title: propTypes.string,
+	body: propTypes.string,
+	url: propTypes.string
 };
 
-
-
-
-//create your first component
 export function Home() {
 	return (
-		<div className="text-center mt-5">
-			<h1>Titulo del sitio en funcion Home</h1>
-			{/* La forma de llamar al título, es a través del componente previamente definido. */}
-			<Title />
-			{/* Acá coloco el título, per a través de un componente */}
-		</div>
-		<div>
-			<Card 
-				title='titulo'
-				image='imagen'
-				content='content'
+		<div className="row">
+			<div className="col">
+				<Card
+					image="https://st4.depositphotos.com/12982378/22072/i/600/depositphotos_220729084-stock-photo-smiling-adult-man-crossed-arms.jpg"
+					title="Titulo con React"
+					body="A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. If you’re familiar with Bootstrap 3, cards replace our old panels, wells, and thumbnails. Similar functionality to those components is available as modifier classes for cards."
+					url="https://linkedin.com"
 				/>
+			</div>
+			<div className="col">
+				<Card
+					image="https://st4.depositphotos.com/12982378/22072/i/600/depositphotos_220729084-stock-photo-smiling-adult-man-crossed-arms.jpg"
+					title="Titulo con React 2"
+					body="A 2nd card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. If you’re familiar with Bootstrap 3, cards replace our old panels, wells, and thumbnails. Similar functionality to those components is available as modifier classes for cards."
+					url="https://linkedin.com"
+				/>
+			</div>
 		</div>
 	);
 }
-
