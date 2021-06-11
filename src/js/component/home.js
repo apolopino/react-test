@@ -8,14 +8,12 @@ import rigoImage from "../../img/rigo-baby.jpg";
 const Title = props => {
 	return (
 		<div>
-			<h1 style={{ color: "red", fontSize: "60px" }}>
-				Titulo en componente Title, con inline style en react
-			</h1>
+			<h1 style={{ color: "red", fontSize: "60px" }}>{props.name}</h1>
 			<h2>{props.name}</h2>
 		</div>
 	);
 };
-
+// Definos los proptypes para el title
 Title.propTypes = {
 	name: propTypes.string
 };
@@ -45,7 +43,7 @@ Card.propTypes = {
 
 export function Home() {
 	return (
-		<div className="row">
+		<div className="container row">
 			<div className="col">
 				<Card
 					image="https://st4.depositphotos.com/12982378/22072/i/600/depositphotos_220729084-stock-photo-smiling-adult-man-crossed-arms.jpg"
